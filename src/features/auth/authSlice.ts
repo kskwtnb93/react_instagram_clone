@@ -190,7 +190,7 @@ export const {
 } = authSlice.actions;
 
 export const selectIsLoadingAuth = (state: RootState) =>
-  // ここでのauthは、store.tsの記載と一致させる必要がある
+  // ここでの.auth.は、store.tsの記載と一致させる必要がある
   state.auth.isLoadingAuth;
 export const selectOpenSignIn = (state: RootState) => state.auth.openSignIn;
 export const selectOpenSignUp = (state: RootState) => state.auth.openSignUp;

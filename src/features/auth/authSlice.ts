@@ -9,7 +9,7 @@ const apiUrl = process.env.REACT_APP_DEV_API_URL;
 export const fetchAsyncLogin = createAsyncThunk(
   "auth/post",
   async (authen: PROPS_AUTHEN) => {
-    const res = await axios.post(`${apiUrl}authen/jwt/create`, authen, {
+    const res = await axios.post(`${apiUrl}authen/jwt/create/`, authen, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -22,7 +22,7 @@ export const fetchAsyncLogin = createAsyncThunk(
 export const fetchAsyncRegister = createAsyncThunk(
   "auth/register",
   async (authen: PROPS_AUTHEN) => {
-    const res = await axios.post(`${apiUrl}api/register`, authen, {
+    const res = await axios.post(`${apiUrl}api/register/`, authen, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -35,7 +35,7 @@ export const fetchAsyncRegister = createAsyncThunk(
 export const fetchAsyncCreateProfile = createAsyncThunk(
   "profile/post",
   async (nickName: PROPS_NICKNAME) => {
-    const res = await axios.post(`${apiUrl}api/profile`, nickName, {
+    const res = await axios.post(`${apiUrl}api/profile/`, nickName, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `JWT ${localStorage.localJWT}`,
@@ -71,7 +71,7 @@ export const fetchAsyncUpdateProfile = createAsyncThunk(
 export const fetchAsyncGetMyProfile = createAsyncThunk(
   "profile/get",
   async () => {
-    const res = await axios.get(`${apiUrl}api/myprofile`, {
+    const res = await axios.get(`${apiUrl}api/myprofile/`, {
       headers: {
         Authorization: `JWT ${localStorage.localJWT}`,
       },

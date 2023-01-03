@@ -157,7 +157,7 @@ export const authSlice = createSlice({
     builder.addCase(fetchAsyncLogin.fulfilled, (state, action) => {
       // action.payload → fetchAsyncLogin関数でreturnした値を受け取っている
       // action.payload.access → JWTでは、accessとrefreshのトークンがある。ここではaccessトークンを取得し、localStorageに格納。
-      localStorage.setItem("localeJWT", action.payload.access);
+      localStorage.setItem("localJWT", action.payload.access);
     });
     builder.addCase(fetchAsyncCreateProfile.fulfilled, (state, action) => {
       state.myprofile = action.payload;

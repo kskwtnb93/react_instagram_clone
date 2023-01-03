@@ -158,6 +158,12 @@ export const postSlice = createSlice({
         comments: action.payload,
       };
     });
+    builder.addCase(fetchAsyncPostComment.fulfilled, (state, action) => {
+      return {
+        ...state,
+        comments: [...state.comments, action.payload],
+      };
+    });
     builder.addCase(fetchAsyncPatchLiked.fulfilled, (state, action) => {
       return {
         ...state,

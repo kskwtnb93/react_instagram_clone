@@ -40,6 +40,7 @@ import {
 } from "../post/postSlice";
 
 import Post from "../post/Post";
+import EditProfile from "./EditProfile";
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -82,8 +83,6 @@ function Core() {
   // ブラウザ起動時に実行
   useEffect(() => {
     const fetchBootLoader = async () => {
-      console.log(localStorage.localJWT);
-
       // localStorage にJWTトークンが保存されているかチェック
       if (localStorage.localJWT) {
         // サインインモーダルを閉じる
@@ -111,6 +110,7 @@ function Core() {
   return (
     <div>
       <Auth />
+      <EditProfile />
       <div className={styles.core_header}>
         <h1 className={styles.core_title}>Instagram clone</h1>
         {

@@ -7,6 +7,8 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { TextField, Button, CircularProgress } from "@material-ui/core";
 
+import { fetchAsyncGetPosts, fetchAsyncGetComments } from "../post/postSlice";
+
 import {
   selectIsLoadingAuth,
   selectOpenSignIn,
@@ -68,8 +70,8 @@ function Auth() {
               );
 
               await dispatch(fetchAsyncGetProfiles());
-              //   await dispatch(fetchAsyncGetPosts());
-              //   await dispatch(fetchAsyncGetComments());
+              await dispatch(fetchAsyncGetPosts());
+              await dispatch(fetchAsyncGetComments());
               await dispatch(fetchAsyncGetMyProfile());
             }
             await dispatch(fetchCredEnd());
@@ -173,8 +175,8 @@ function Auth() {
             const result = await dispatch(fetchAsyncLogin(values));
             if (fetchAsyncLogin.fulfilled.match(result)) {
               await dispatch(fetchAsyncGetProfiles());
-              //   await dispatch(fetchAsyncGetPosts());
-              //   await dispatch(fetchAsyncGetComments());
+              await dispatch(fetchAsyncGetPosts());
+              await dispatch(fetchAsyncGetComments());
               await dispatch(fetchAsyncGetMyProfile());
             }
             await dispatch(fetchCredEnd());

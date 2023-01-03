@@ -39,6 +39,8 @@ import {
   fetchAsyncGetComments,
 } from "../post/postSlice";
 
+import Post from "../post/Post";
+
 const StyledBadge = withStyles((theme) => ({
   badge: {
     backgroundColor: "#44b700",
@@ -80,6 +82,8 @@ function Core() {
   // ブラウザ起動時に実行
   useEffect(() => {
     const fetchBootLoader = async () => {
+      console.log(localStorage.localJWT);
+
       // localStorage にJWTトークンが保存されているかチェック
       if (localStorage.localJWT) {
         // サインインモーダルを閉じる
@@ -144,7 +148,7 @@ function Core() {
                   }}
                 >
                   <StyledBadge
-                    overlap="circle"
+                    overlap="circular"
                     anchorOrigin={{
                       vertical: "bottom",
                       horizontal: "right",
@@ -176,34 +180,34 @@ function Core() {
                   SignUp
                 </Button>
               </div>
-
-              {profile?.nickName && (
-                <>
-                  <div className={styles.core_posts}>
-                    <Grid container spacing={4}>
-                      {posts
-                        .slice(0)
-                        .reverse()
-                        .map((post) => (
-                          <Grid key={post.id} item xs={12} md={4}>
-                            {/* <Post
-                              postId={post.id}
-                              title={post.title}
-                              loginId={profile.userProfile}
-                              userPost={post.userPost}
-                              imageUrl={post.img}
-                              liked={post.liked}
-                            /> */}
-                          </Grid>
-                        ))}
-                    </Grid>
-                  </div>
-                </>
-              )}
             </div>
           )
         }
       </div>
+
+      {profile?.nickName && (
+        <>
+          <div className={styles.core_posts}>
+            <Grid container spacing={4}>
+              {posts
+                .slice(0)
+                .reverse()
+                .map((post) => (
+                  <Grid key={post.id} item xs={12} md={4}>
+                    <Post
+                      postId={post.id}
+                      title={post.title}
+                      loginId={profile.userProfile}
+                      userPost={post.userPost}
+                      imageUrl={post.img}
+                      liked={post.liked}
+                    />
+                  </Grid>
+                ))}
+            </Grid>
+          </div>
+        </>
+      )}
     </div>
   );
 }
